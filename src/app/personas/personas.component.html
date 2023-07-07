@@ -1,0 +1,35 @@
+<div class="card border-info mb-3">
+    <div class="card-header">Personas</div>
+    <div class="card-body">
+      <div class="my-4 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/personas/form']">Crear</button>
+      </div>
+      <div class="alert alert-info" *ngIf="personas?.length == 0">
+        No hay registros en la base de datos!
+      </div>
+      <table class="table table-bordered table-striped" >
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Fecha</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of personas">
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellido  }}</td>
+            <td>{{persona.email}}</td>
+            <td>{{persona.createAt | date: "dd/MM/yyyy"}}</td>
+            <td><button type="button" name="Editar" [routerLink]="['/personas/form',persona.id]" class="btn btn-primary btn-sm">Editar</button></td>
+            <td><button type="button" name="Eliminar" (click)="delete(persona)" class="btn btn-danger btn-sm">Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+  
